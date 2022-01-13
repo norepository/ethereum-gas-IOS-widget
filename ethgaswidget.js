@@ -1,4 +1,4 @@
-const api = 'DR5K188G34RD346BNMPRYSEEV9A38GNGD8';
+const api = 'Z9VCYHRM4TC3CYVSH977DJCD1CRBXH3R2Z';
 
 const params = args.widgetParameter ? args.widgetParameter.split(",") : [];
 
@@ -11,16 +11,8 @@ if (isDarkTheme) {
 }
 widget.setPadding(padding, padding, padding, padding);
 
-widget.url = 'https://www.etherscan.io/gastracker';
+widget.url = 'https://etherscan.io/gastracker';
 
-let heading = widget.addText("⛽️Gas Tracker⛽️");
-heading.centerAlignText();
-heading.font = Font.lightSystemFont(15);
-heading.textColor = new Color("#ffffff");
-/*const headerStack = widget.addStack();
-headerStack.setPadding(0, 0, 25, 0);
-const headerText = headerStack.addText("Ethereum Gas");
-headerText.font = Font.mediumSystemFont(16);*/
 widget.addSpacer(10);
 
 async function buildWidget() {  
@@ -28,9 +20,9 @@ async function buildWidget() {
     const mediumgas = await getMediumGas();
     const slowgas = await getSlowGas();
   
-    addGas('🚀Fast', `${fastgas}`);
-    addGas('🚶🏼‍♂️Medium', `${mediumgas}`);
-    addGas('🐢Slow', `${slowgas}`);
+    addGas('🚀Fastest', ` ${fastgas}`);
+    addGas('🚶🏼Medium', ` ${mediumgas}`);
+    addGas('🐢Slowest', ` ${slowgas}`);
 }
 
 function addGas(gasmode, gasprice) {
@@ -42,6 +34,7 @@ function addGas(gasmode, gasprice) {
    const gaspriceStack = rowStack.addStack(); 
   
    gasmodeStack.setPadding(0, 0, 0, 8);
+   gaspriceStack.setPadding(0,0,0,4);
   
    const gasmodeText = gasmodeStack.addText(gasmode);
    gasmodeText.font = Font.mediumSystemFont(16);
@@ -75,7 +68,7 @@ async function getSlowGas() {
   return data.result.SafeGasPrice
 }
 
-await setInterval(buildWidget, 1000);
+await buildWidget();
 
 Script.setWidget(widget);
 Script.complete();
