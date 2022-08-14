@@ -1,4 +1,4 @@
-const api = 'Z9VCYHRM4TC3CYVSH977DJCD1CRBXH3R2Z';
+const api = 'ETHERSCAN-API-KEY';
 
 const params = args.widgetParameter ? args.widgetParameter.split(",") : [];
 
